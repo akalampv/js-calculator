@@ -126,5 +126,9 @@ body {
     grid-area: equal;
     background: orangered;
     color: white;
+}
 
+.change {
+    grid-area: change;
+    color: orangered;
 }
