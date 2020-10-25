@@ -1,122 +1,184 @@
-let result = document.querySelector(".result");
+let display = document.querySelector(".result");
 let symbols = document.querySelectorAll(".symbol");
 let numbers = document.querySelectorAll(".number");
 let ac = document.querySelector(".ac");
 let c = document.querySelector(".c");
 let equal = document.querySelector(".equal");
+let change = document.querySelector(".change");
+let sciSymbols = document.querySelectorAll(".sci");
 
 numbers.forEach((number) => {
     number.addEventListener("click", () => {
-        if (result.textContent === "0") {
-            result.textContent = number.textContent;
+        if (display.textContent === "0") {
+            display.textContent = number.textContent;
         } else {
-            result.textContent += number.textContent;
+            display.textContent += number.textContent;
         }
     });
 });
 
 ac.addEventListener("click", () => {
-    result.textContent = "0";
+    display.textContent = "0";
 });
 
 c.addEventListener("click", () => {
-    result.textContent = result.textContent.slice(0, -1);
-    if (result.textContent.length < 1) {
-        result.textContent = "0";
+    display.textContent = display.textContent.slice(0, -1);
+    if (display.textContent.length < 1) {
+        display.textContent = "0";
     }
 });
 
 symbols.forEach((symbol) => {
     symbol.addEventListener("click", () => {
-        if (result.textContent[result.textContent.length - 1].match("[0-9]")) {
-            if (result.textContent === "0") {
-                result.textContent = symbol.textContent;
+        if (display.textContent[display.textContent.length - 1].match("[0-9]")) {
+            if (display.textContent === "0") {
+                display.textContent = symbol.textContent;
             } else {
-                result.textContent += symbol.textContent;
+                display.textContent += symbol.textContent;
             }
         }
     });
 });
 
 equal.addEventListener("click", () => {
-    result.textContent = eval(result.textContent).toString();
+    display.textContent = display.textContent.replace("sin", "Math.sin");
+    display.textContent = display.textContent.replace("cos", "Math.cos");
+    display.textContent = display.textContent.replace("tan", "Math.tan");
+    display.textContent = display.textContent.replace("lg", "Math.log10");
+    display.textContent = display.textContent.replace("ln", "Math.log");
+    display.textContent = display.textContent.replace("sqrt", "Math.sqrt");
+
+    display.textContent = eval(display.textContent).toString();
 })
 
 document.addEventListener("keydown", (event) => {
     if (event.key.match("[0-9]")) {
-        if (result.textContent === "0") {
-            result.textContent = event.key;
+        if (display.textContent === "0") {
+            display.textContent = event.key;
         } else {
-            result.textContent += event.key;
+            display.textContent += event.key;
         }
     } else {
         switch (event.key) {
             case "Delete":
-                result.textContent = "0";
+                display.textContent = "0";
                 break;
             case "Backspace":
-                result.textContent = result.textContent.slice(0, -1);
-                if (result.textContent.length < 1) {
-                    result.textContent = "0";
+                display.textContent = display.textContent.slice(0, -1);
+                if (display.textContent.length < 1) {
+                    display.textContent = "0";
                 }
                 break;
             case "+":
-                if (result.textContent[result.textContent.length - 1].match("[0-9]")) {
-                    if (result.textContent === "0") {
-                        result.textContent = "+";
+                if (display.textContent[display.textContent.length - 1].match("[0-9]")) {
+                    if (display.textContent === "0") {
+                        display.textContent = "+";
                     } else {
-                        result.textContent += "+";
+                        display.textContent += "+";
                     }
                 }
                 break;
             case "-":
-                if (result.textContent[result.textContent.length - 1].match("[0-9]")) {
-                    if (result.textContent === "0") {
-                        result.textContent = "-";
+                if (display.textContent[display.textContent.length - 1].match("[0-9]")) {
+                    if (display.textContent === "0") {
+                        display.textContent = "-";
                     } else {
-                        result.textContent += "-";
+                        display.textContent += "-";
                     }
                 }
                 break;
             case "*":
-                if (result.textContent[result.textContent.length - 1].match("[0-9]")) {
-                    if (result.textContent === "0") {
-                        result.textContent = "*";
+                if (display.textContent[display.textContent.length - 1].match("[0-9]")) {
+                    if (display.textContent === "0") {
+                        display.textContent = "*";
                     } else {
-                        result.textContent += "*";
+                        display.textContent += "*";
                     }
                 }
                 break;
             case "/":
-                if (result.textContent[result.textContent.length - 1].match("[0-9]")) {
-                    if (result.textContent === "0") {
-                        result.textContent = "/";
+                if (display.textContent[display.textContent.length - 1].match("[0-9]")) {
+                    if (display.textContent === "0") {
+                        display.textContent = "/";
                     } else {
-                        result.textContent += "/";
+                        display.textContent += "/";
                     }
                 }
                 break;
             case "%":
-                if (result.textContent[result.textContent.length - 1].match("[0-9]")) {
-                    if (result.textContent === "0") {
-                        result.textContent = "%";
+                if (display.textContent[display.textContent.length - 1].match("[0-9]")) {
+                    if (display.textContent === "0") {
+                        display.textContent = "%";
                     } else {
-                        result.textContent += "%";
+                        display.textContent += "%";
                     }
                 }
                 break;
             case ".":
-                if (result.textContent[result.textContent.length - 1].match("[0-9]")) {
-                    if (result.textContent === "0") {
-                        result.textContent = ".";
+                if (display.textContent[display.textContent.length - 1].match("[0-9]")) {
+                    if (display.textContent === "0") {
+                        display.textContent = ".";
                     } else {
-                        result.textContent += ".";
+                        display.textContent += ".";
+                    }
+                }
+                break;
+            case "(":
+                if (!(display.textContent[display.textContent.length - 1].match("[0-9]"))) {
+                    if (display.textContent === "0") {
+                        display.textContent = "(";
+                    } else {
+                        display.textContent += "(";
+                    }
+                }
+                break;
+            case ")":
+                if (display.textContent[display.textContent.length - 1].match("[0-9]")) {
+                    if (display.textContent === "0") {
+                        display.textContent = ")";
+                    } else {
+                        display.textContent += ")";
                     }
                 }
                 break;
             case "Enter":
-                result.textContent = eval(result.textContent).toString();
+                display.textContent = display.textContent.replace("sin", "Math.sin");
+                display.textContent = eval(display.textContent).toString();
                 break;
         }
     }
+});
+
+change.addEventListener("click", () => {
+    document.querySelector(".grid-container").classList.toggle("science");
+})
+
+sciSymbols.forEach((symbol) => {
+    symbol.addEventListener("click", () => {
+        if (symbol.innerHTML === "x<sup>y</sup>") {
+            if (display.textContent === "0") {
+                display.textContent = "**";
+            } else {
+                display.textContent += "**";
+            }
+        } else if (symbol.classList.contains("sqrt")) {
+            if (display.textContent === "0") {
+                display.textContent = "sqrt(";
+            } else {
+                display.textContent += "sqrt(";
+            }
+        } else if (symbol.classList.contains("pi")) {
+            if (display.textContent === "0") {
+                display.textContent = Math.PI.toString();
+            } else {
+                display.textContent += Math.PI.toString();
+            }
+        } else {
+            if (display.textContent === "0") {
+                display.textContent = symbol.textContent;
+            } else {
+                display.textContent += symbol.textContent;
+            }
+        }
+    });
 });
