@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8">
     <title>JS Calculator</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+          integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+          crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -14,7 +17,9 @@
     <div class="grid-container">
         <p class="result">0</p>
         <button type="button" class="btn ac">AC</button>
-        <button type="button" class="btn c">C</button>
+        <button type="button" class="btn c">
+            <span class="fas fa-backspace"></span>
+        </button>
         <button type="button" class="btn mod symbol">%</button>
         <button type="button" class="btn div symbol">/</button>
         <button type="button" class="btn seven number">7</button>
@@ -29,6 +34,9 @@
         <button type="button" class="btn two number">2</button>
         <button type="button" class="btn three number">3</button>
         <button type="button" class="btn add symbol">+</button>
+        <button type="button" class="btn change">
+            <span class="fas fa-sync-alt"></span>
+        </button>
         <button type="button" class="btn zero number">0</button>
         <button type="button" class="btn dot symbol">.</button>
         <button type="button" class="btn equal">=</button>
