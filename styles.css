@@ -9,12 +9,30 @@ body {
 .grid-container {
     display: grid;
     grid-template-areas:
-    "result result result result"
-    "ac c mod div"
-    "seven eight nine mult"
-    "four five six sub"
-    "one two three add"
-    ". zero dot equal";
+        "result result result result"
+        "ac c mod div"
+        "seven eight nine mult"
+        "four five six sub"
+        "one two three add"
+        "change zero dot equal";
+    border: 2px solid orangered;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    background: black;
+    padding: 1rem;
+}
+
+.grid-container.science {
+    display: grid;
+    grid-template-areas:
+        "result result result result result"
+        "sin cos tan parS parE"
+        "lg ac c mod div"
+        "ln seven eight nine mult"
+        "xy four five six sub"
+        "sqrt one two three add"
+        "change pi zero dot equal";
     border: 2px solid orangered;
     width: 100vw;
     height: 100vh;
@@ -131,4 +149,57 @@ body {
 .change {
     grid-area: change;
     color: orangered;
+}
+
+.xy {
+    grid-area: xy;
+}
+
+.sqrt {
+    grid-area: sqrt;
+}
+
+.sin {
+    grid-area: sin;
+}
+
+.cos {
+    grid-area: cos;
+}
+
+.tan {
+    grid-area: tan;
+}
+
+.lg {
+    grid-area: lg;
+}
+
+.ln {
+    grid-area: ln;
+}
+
+.parS {
+    grid-area: parS;
+}
+
+.parE {
+    grid-area: parE;
+}
+
+.e {
+    grid-area: e;
+}
+
+.pi {
+    grid-area: pi;
+}
+
+.sci {
+    display: none;
+}
+
+.grid-container.science .sci {
+    display: initial;
+    color: darkgoldenrod;
 }
