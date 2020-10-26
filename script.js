@@ -48,7 +48,7 @@ equal.addEventListener("click", () => {
     display.textContent = display.textContent.replace("ln", "Math.log");
     display.textContent = display.textContent.replace("sqrt", "Math.sqrt");
 
-    display.textContent = eval(display.textContent).toString();
+    display.textContent = (Math.round(eval(display.textContent) * 100000) / 100000).toString();
 })
 
 document.addEventListener("keydown", (event) => {
@@ -143,7 +143,13 @@ document.addEventListener("keydown", (event) => {
                 break;
             case "Enter":
                 display.textContent = display.textContent.replace("sin", "Math.sin");
-                display.textContent = eval(display.textContent).toString();
+                display.textContent = display.textContent.replace("cos", "Math.cos");
+                display.textContent = display.textContent.replace("tan", "Math.tan");
+                display.textContent = display.textContent.replace("lg", "Math.log10");
+                display.textContent = display.textContent.replace("ln", "Math.log");
+                display.textContent = display.textContent.replace("sqrt", "Math.sqrt");
+                
+                display.textContent = (Math.round(eval(display.textContent) * 100000) / 100000).toString();
                 break;
         }
     }
@@ -169,9 +175,9 @@ sciSymbols.forEach((symbol) => {
             }
         } else if (symbol.classList.contains("pi")) {
             if (display.textContent === "0") {
-                display.textContent = Math.PI.toString();
+                display.textContent = (Math.round(Math.PI * 100000) / 100000).toString();
             } else {
-                display.textContent += Math.PI.toString();
+                display.textContent += (Math.round(Math.PI * 100000) / 100000).toString();
             }
         } else {
             if (display.textContent === "0") {
